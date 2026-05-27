@@ -259,6 +259,9 @@ export default function Home() {
                 {[
                   "/image/animada.jpeg",
                   "/image/guama.jpeg",
+                  "/image/dulces.jpeg",
+                  "/image/nectar.jpeg",
+                  "/image/trabajadores.jpeg",
                 ].map((src, i) => (
                   <div key={i} className="overflow-hidden rounded-xl border border-gold/10 bg-white/5">
                     <img src={src} alt={`imagen-${i}`} className="w-full h-56 object-cover" />
