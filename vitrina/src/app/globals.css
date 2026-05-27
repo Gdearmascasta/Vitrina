@@ -1,0 +1,126 @@
+@import "tailwindcss";
+
+:root {
+  /* Premium Palette Colors */
+  --color-ivory: #FAF8F5;
+  --color-sage: #8A9A86;
+  --color-sand: #E6DFD3;
+  --color-terracotta: #D48C70;
+  --color-cocoa: #4A3F35;
+  --color-gold: #C5A880;
+  
+  /* Additional Contrast Colors */
+  --color-dark-green: #2C3527;
+  --color-deep-cocoa: #2E251F;
+  --color-gold-hover: #E2C79E;
+
+  --background: var(--color-ivory);
+  --foreground: var(--color-deep-cocoa);
+}
+
+@theme {
+  /* Color theme mapping */
+  --color-ivory: var(--color-ivory);
+  --color-sage: var(--color-sage);
+  --color-sand: var(--color-sand);
+  --color-terracotta: var(--color-terracotta);
+  --color-cocoa: var(--color-cocoa);
+  --color-gold: var(--color-gold);
+  --color-dark-green: var(--color-dark-green);
+  --color-deep-cocoa: var(--color-deep-cocoa);
+  --color-gold-hover: var(--color-gold-hover);
+  
+  /* Font theme mapping */
+  --font-serif: var(--font-serif-cormorant), Georgia, serif;
+  --font-sans: var(--font-sans-outfit), sans-serif;
+
+  /* Custom Slow Premium Animations */
+  --animate-float-slow: float-slow 8s ease-in-out infinite;
+  --animate-float-medium: float-medium 6s ease-in-out infinite;
+  --animate-pulse-slow: pulse-slow 4s cubic-bezier(0.4, 0, 0.6, 1) infinite;
+  --animate-glow: glow 3s ease-in-out infinite alternate;
+  --animate-fog-flow: fog-flow 30s linear infinite;
+  --animate-spin-slow: spin 20s linear infinite;
+
+  @keyframes float-slow {
+    0%, 100% { transform: translateY(0px) rotate(0deg); }
+    50% { transform: translateY(-15px) rotate(2deg); }
+  }
+  @keyframes float-medium {
+    0%, 100% { transform: translateY(0px) rotate(0deg); }
+    50% { transform: translateY(-8px) rotate(-1.5deg); }
+  }
+  @keyframes pulse-slow {
+    0%, 100% { opacity: 0.3; transform: scale(1); }
+    50% { opacity: 0.8; transform: scale(1.08); }
+  }
+  @keyframes glow {
+    0% { filter: drop-shadow(0 0 2px rgba(197, 168, 128, 0.3)); }
+    100% { filter: drop-shadow(0 0 10px rgba(197, 168, 128, 0.8)); }
+  }
+  @keyframes fog-flow {
+    0% { transform: translateX(-10%) translateY(0) scale(1); }
+    50% { transform: translateX(10%) translateY(2%) scale(1.05); }
+    100% { transform: translateX(-10%) translateY(0) scale(1); }
+  }
+}
+
+/* Custom Scrollbar */
+::-webkit-scrollbar {
+  width: 6px;
+}
+::-webkit-scrollbar-track {
+  background: var(--color-ivory);
+}
+::-webkit-scrollbar-thumb {
+  background: var(--color-sage);
+  border-radius: 9999px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: var(--color-gold);
+}
+
+/* Smooth Scrolling and Selections */
+html {
+  scroll-behavior: smooth;
+  -webkit-font-smoothing: antialiased;
+}
+
+body {
+  background: var(--background);
+  color: var(--foreground);
+  overflow-x: hidden;
+}
+
+/* Glassmorphism Preset Utilities */
+.glass-premium {
+  background: rgba(250, 248, 245, 0.7);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border: 1px solid rgba(197, 168, 128, 0.15);
+}
+
+.glass-dark-premium {
+  background: rgba(46, 37, 31, 0.8);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  border: 1px solid rgba(197, 168, 128, 0.2);
+}
+
+.glass-sage-premium {
+  background: rgba(138, 154, 134, 0.15);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border: 1px solid rgba(138, 154, 134, 0.25);
+}
+
+/* Custom overlay gradients */
+.gradient-overlay-cinematic {
+  background: linear-gradient(to bottom, rgba(46, 37, 31, 0.4) 0%, rgba(46, 37, 31, 0.75) 50%, rgba(46, 37, 31, 0.95) 100%);
+}
+
+.gradient-gold-text {
+  background: linear-gradient(135deg, #C5A880 0%, #E2C79E 50%, #B89765 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
