@@ -14,8 +14,20 @@ import SustainabilityManifesto from "@/components/SustainabilityManifesto";
 import BookingCheckout from "@/components/BookingCheckout";
 
 export default function Home() {
+  const videoRef = React.useRef<HTMLVideoElement>(null);
   const [loadingComplete, setLoadingComplete] = useState(false);
-  const [videoPlaying, setVideoPlaying] = useState(false);
+  const [videoPlaying, setVideoPlaying] = useState(true);
+
+  const toggleVideo = () => {
+    if (!videoRef.current) return;
+    if (videoPlaying) {
+      videoRef.current.pause();
+      setVideoPlaying(false);
+    } else {
+      videoRef.current.play().catch((err) => console.log("Video playback blocked initially", err));
+      setVideoPlaying(true);
+    }
+  };
 
   const scrollToSection = (id: string) => {
     const el = document.getElementById(id);
@@ -63,17 +75,18 @@ export default function Home() {
               <div className="absolute inset-0 bg-[radial-gradient(circle_at_bottom,rgba(46,37,31,0.95)_0%,transparent_80%)] z-10" />
               <div className="absolute inset-x-0 bottom-0 h-40 bg-gradient-to-t from-deep-cocoa to-transparent z-10" />
               
-              {/* Video Background Mock/Setup Container */}
-              <div className="absolute inset-0 bg-cover bg-center opacity-30 select-none pointer-events-none" style={{ backgroundImage: "url('/images/forest-placeholder.jpg')" }}>
-                {videoPlaying && (
-                  <iframe 
-                    className="w-full h-full object-cover scale-105 pointer-events-none"
-                    src="https://www.youtube.com/embed/dQw4w9WgXcQ?autoplay=1&mute=1&controls=0&loop=1&playlist=dQw4w9WgXcQ" 
-                    title="Bosque Seco Tropical Ambient Video"
-                    frameBorder="0"
-                    allow="autoplay; encrypted-media"
-                  />
-                )}
+              {/* Local Premium Background Video Loop */}
+              <div className="absolute inset-0 z-0 bg-cover bg-center select-none pointer-events-none opacity-30">
+                <video
+                  ref={videoRef}
+                  autoPlay
+                  muted
+                  loop
+                  playsInline
+                  className="w-full h-full object-cover scale-105"
+                >
+                  <source src="/video/14403454_3840_2160_30fps.mp4" type="video/mp4" />
+                </video>
               </div>
             </div>
 
@@ -147,7 +160,7 @@ export default function Home() {
               <div className="w-full max-w-lg grid grid-cols-2 gap-4 mt-4">
                 {/* Video Playback Trigger */}
                 <button
-                  onClick={() => setVideoPlaying(!videoPlaying)}
+                  onClick={toggleVideo}
                   className="glass-dark-premium border border-gold/15 p-3 rounded-xl hover:border-gold/40 transition-colors flex items-center justify-center gap-2 group text-left cursor-pointer"
                 >
                   <div className="h-8 w-8 rounded-full bg-gold/10 flex items-center justify-center text-gold group-hover:scale-105 transition-transform">
