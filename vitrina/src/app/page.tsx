@@ -250,6 +250,25 @@ export default function Home() {
           </section>
 
           {/* ============================================================== */}
+          {/* SECCIÓN 5 — GALERÍA DE IMÁGENES */}
+          {/* ============================================================== */}
+          <section id="galeria" className="relative w-full bg-sand/20 border-t border-gold/10 py-12">
+            <div className="max-w-6xl mx-auto px-6">
+              <h2 className="font-serif text-2xl text-deep-cocoa mb-6">Galería</h2>
+              <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-4">
+                {[
+                  "/image/animada.jpeg",
+                  "/image/guama.jpeg",
+                ].map((src, i) => (
+                  <div key={i} className="overflow-hidden rounded-xl border border-gold/10 bg-white/5">
+                    <img src={src} alt={`imagen-${i}`} className="w-full h-56 object-cover" />
+                  </div>
+                ))}
+              </div>
+            </div>
+          </section>
+
+          {/* ============================================================== */}
           {/* FOOTER FINAL */}
           {/* ============================================================== */}
           <footer className="relative bg-deep-cocoa border-t border-gold/15 text-ivory py-16 px-6 overflow-hidden">
